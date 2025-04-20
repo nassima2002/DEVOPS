@@ -14,14 +14,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        run: git clone https://github.com/nassima2002/DEVOPS.git # Manually clone the repo
 
       - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.1' # ou '8.1' selon ton projet
-          extensions: mbstring, intl, bcmath, pdo, mysqli
-          coverage: xdebug
+        run: |
+          sudo apt-get update
+          sudo apt-get install php8.1 php8.1-mbstring php8.1-intl php8.1-bcmath php8.1-pdo php8.1-mysqli php8.1-xdebug
 
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist
