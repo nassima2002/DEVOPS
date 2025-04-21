@@ -8,20 +8,21 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-22.04  # 👈 On utilise 22.04 ici
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout code
-        run: |
-          git clone https://github.com/${{ github.repository }} .
+        uses: actions/checkout@v2
 
-      - name: Install PHP 7.4 and extensions via PPA
+      - name: Install PHP extensions
         run: |
           sudo apt-get update
-          sudo apt-get install -y software-properties-common
-          sudo add-apt-repository ppa:ondrej/php -y
-          sudo apt-get update
-          sudo apt-get install -y php7.4 php7.4-mbstring php7.4-intl php7.4-bcmath php7.4-mysql php7.4-xml php7.4-curl unzip curl
+          sudo apt-get install -y php8.1 php8.1-mbstring php8.1-intl php8.1-bcmath php8.1-mysql php8.1-xml php8.1-curl unzip curl
+
+      - name: Check PHP version and extensions
+        run: |
+          php -v
+          php -m
 
       - name: Install Composer
         run: |
