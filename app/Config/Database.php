@@ -27,13 +27,13 @@ class Database extends Config
     public array $default = [
         'DSN'          => '',
         'hostname'     => 'localhost',
-        'username'     => 'root',   // Utilisateur MySQL
-        'password'     => '',       // Laisser vide si aucun mot de passe
-        'database'     => 'tests_db',    // Nom de la base de données
+        'username'     => '',
+        'password'     => '',
+        'database'     => '',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
-        'DBDebug'      => true,
+        'DBDebug'      => (ENVIRONMENT !== 'production'),
         'charset'      => 'utf8mb4',
         'DBCollat'     => 'utf8mb4_general_ci',
         'swapPre'      => '',
@@ -166,27 +166,30 @@ class Database extends Config
     public array $tests = [
         'DSN'         => '',
         'hostname'    => '127.0.0.1',
-        'username'    => 'root',
-        'password'    => '', // mets ton mot de passe si tu en as un
-        'database'    => 'tests_db', // crée cette base dans MySQL
-        'DBDriver'    => 'MySQLi',
-        'DBPrefix'    => '',
+        'username'    => '',
+        'password'    => '',
+        'database'    => ':memory:',
+        'DBDriver'    => 'SQLite3',
+        'DBPrefix'    => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
         'pConnect'    => false,
         'DBDebug'     => true,
-        'charset'     => 'utf8mb4',
-        'DBCollat'    => 'utf8mb4_general_ci',
+        'charset'     => 'utf8',
+        'DBCollat'    => '',
         'swapPre'     => '',
         'encrypt'     => false,
         'compress'    => false,
         'strictOn'    => false,
         'failover'    => [],
         'port'        => 3306,
+        'foreignKeys' => true,
+        'busyTimeout' => 1000,
         'dateFormat'  => [
             'date'     => 'Y-m-d',
             'datetime' => 'Y-m-d H:i:s',
             'time'     => 'H:i:s',
         ],
     ];
+
     public function __construct()
     {
         parent::__construct();

@@ -1,22 +1,10 @@
 {
-    "name": "codeigniter4/appstarter",
-    "description": "CodeIgniter4 starter app",
-    "license": "MIT",
-    "type": "project",
-    "homepage": "https://codeigniter.com",
-    "support": {
-        "forum": "https://forum.codeigniter.com/",
-        "source": "https://github.com/codeigniter4/CodeIgniter4",
-        "slack": "https://codeigniterchat.slack.com"
-    },
-    "require": {
-        "php": "^8.1",
-        "codeigniter4/framework": "^4.0"
-    },
+    "name": "atelier1/devops",
+    "description": "Mon projet DevOps",
     "require-dev": {
         "fakerphp/faker": "^1.9",
         "mikey179/vfsstream": "^1.6",
-        "phpunit/phpunit": "^10.5.16"
+        "phpunit/phpunit": "9.5"
     },
     "autoload": {
         "psr-4": {
@@ -40,5 +28,8 @@
     },
     "scripts": {
         "test": "phpunit"
+    },
+    "require": {
+        "codeigniter4/framework": "^4.6"
     }
 }
