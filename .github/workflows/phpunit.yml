@@ -11,18 +11,20 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout code (local)
+        run: |
+          git init
+          git remote add origin https://github.com/${{ github.repository }}
+          git fetch origin ${{ github.ref }}
+          git checkout FETCH_HEAD
 
-      - name: Install PHP extensions
+      - name: Install PHP and extensions
         run: |
           sudo apt-get update
           sudo apt-get install -y php8.1 php8.1-mbstring php8.1-intl php8.1-bcmath php8.1-mysql php8.1-xml php8.1-curl unzip curl
 
-      - name: Check PHP version and extensions
-        run: |
-          php -v
-          php -m
+      - name: Check PHP version
+        run: php -v
 
       - name: Install Composer
         run: |
