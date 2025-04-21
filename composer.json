@@ -27,5 +27,8 @@
     },
     "scripts": {
         "test": "phpunit"
+    },
+    "require": {
+        "codeigniter4/framework": "^4.6"
     }
 }
