@@ -27,11 +27,12 @@
             "**/Database/Migrations/**"
         ]
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\Support\\": "tests/_support"
-        }
-    },
+   "autoload-dev": {
+    "psr-4": {
+        "Tests\\Support\\": "tests/_support",
+        "Tests\\Models\\": "tests/Models"
+    }
+},
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",

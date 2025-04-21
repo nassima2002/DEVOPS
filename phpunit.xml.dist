@@ -42,6 +42,8 @@
         </exclude>
     </source>
     <php>
+        <const name="SUPPORTPATH" value="./tests/_support"/>
+
         <server name="app.baseURL" value="http://example.com/"/>
         <server name="CODEIGNITER_SCREAM_DEPRECATIONS" value="0"/>
         <!-- Directory containing phpunit.xml -->
