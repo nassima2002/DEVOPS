@@ -35,4 +35,8 @@ jobs:
         run: composer install --no-interaction
 
       - name: Run PHPUnit tests
+<<<<<<< HEAD
         run: ./vendor/bin/phpunit --coverage-text
+=======
+        run: ./vendor/bin/phpunit  app/tests --coverage-text
+>>>>>>> d3597f3465e43d94642a68d222309931ce8a0f5f
