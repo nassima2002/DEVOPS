@@ -10,26 +10,20 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Set up PHP
-        run: |
-          sudo apt-get update
-          sudo apt-get install php8.1 php8.1-mbstring php8.1-intl php8.1-bcmath php8.1-pdo php8.1-mysqli php8.1-xdebug -y
-
-      - name: Install Composer
-        run: |
-          curl -sS https://getcomposer.org/installer | php
-          sudo mv composer.phar /usr/local/bin/composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4' # ou une autre version de ton choix
+          extensions: mbstring, intl, bcmath, pdo, mysqli
 
       - name: Install Composer dependencies
-        working-directory: ./ # ou ./nom_du_dossier_si_ton_code_est_dedans
-        run: composer install --no-interaction --prefer-dist
+        run: composer install --no-interaction
 
       - name: Run PHPUnit tests
-        working-directory: ./ # pareil ici
-        run: vendor/bin/phpunit --coverage-text
+        run: ./vendor/bin/phpunit --coverage-text
