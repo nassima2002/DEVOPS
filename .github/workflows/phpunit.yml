@@ -2,11 +2,9 @@ name: PHPUnit Tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   test:
@@ -14,15 +12,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        run: |
+          git clone https://github.com/${{ github.repository }} .
+      
+      - name: Install PHP and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y php7.4 php7.4-mbstring php7.4-intl php7.4-bcmath php7.4-mysql php7.4-xml php7.4-curl unzip curl
+          curl -sS https://getcomposer.org/installer | php
+          sudo mv composer.phar /usr/local/bin/composer
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.4' # ou une autre version de ton choix
-          extensions: mbstring, intl, bcmath, pdo, mysqli
-
-      - name: Install Composer dependencies
+      - name: Install dependencies
         run: composer install --no-interaction
 
       - name: Run PHPUnit tests
