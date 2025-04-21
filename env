@@ -29,6 +29,15 @@
 #--------------------------------------------------------------------
 # DATABASE
 #--------------------------------------------------------------------
+CI_ENVIRONMENT = testing
+
+database.default.DBDriver = MySQLi
+database.default.hostname = localhost
+database.default.database = 'ci4_tests'
+database.default.username = 'root'
+database.default.password = 
+database.default.DBPrefix = 
+database.default.port = 3306
 
 # database.default.hostname = localhost
 # database.default.database = ci4
